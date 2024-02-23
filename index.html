@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Deviation Calculator Week 7</title>
+    <style>
+        body {
+            background-color: silver;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
+        }
+
+        .wrapper {
+            flex: 1; 
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3f4144;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #696c6d;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0; /* Add padding top and bottom */
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="container">
+        <h2>Range and Standard Deviation Calculator Week 6</h2>
+        <label for="numbers">Enter numbers separated by commas:</label>
+        <input type="text" id="numbers" placeholder="Question k ho bhai?">
+        <button onclick="calculate()">Calculate</button>
+        <div id="result"></div>
+    </div>
+</div>
+
+<footer>
+  <p>Made by Your Name T.J.K; 2024.</p>
+</footer>
+
+
+<script>
+  function calculate() {
+      var input = document.getElementById("numbers").value;
+      var numbers = input.split(",").map(function(item) {
+          return parseFloat(item);
+      });
+
+      var sum = numbers.reduce(function(total, num) {
+          return total + num;
+      }, 0);
+
+      var mean = sum / numbers.length;
+
+      var squaredDifferencesSum = numbers.reduce(function(total, num) {
+          return total + Math.pow(num - mean, 2);
+      }, 0);
+
+      var standardDeviation = Math.sqrt(squaredDifferencesSum / (numbers.length - 1));
+
+      var max = Math.max(...numbers);
+      var min = Math.min(...numbers);
+      var range = max - min;
+
+      // Rounding the standard deviation to 2 more decimal places than the original
+      var roundedStandardDeviation = standardDeviation.toFixed(standardDeviation.toString().split(".")[1].length + 2);
+
+      var resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "Mean: " + mean.toFixed(2) + "<br>";
+      resultDiv.innerHTML += "Standard Deviation: " + roundedStandardDeviation + "<br>";
+      resultDiv.innerHTML += "Range: " + range.toFixed(2);
+  }
+</script>
+
+
+</body>
+</html>
