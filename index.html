@@ -65,7 +65,7 @@
 
 <div class="wrapper">
     <div class="container">
-        <h2>Range and Standard Deviation Calculator Week 6</h2>
+        <h2>Range and Standard Deviation Calculator Week 7</h2>
         <label for="numbers">Enter numbers separated by commas:</label>
         <input type="text" id="numbers" placeholder="Question k ho bhai?">
         <button onclick="calculate()">Calculate</button>
@@ -105,7 +105,6 @@
       var roundedStandardDeviation = standardDeviation.toFixed(standardDeviation.toString().split(".")[1].length + 2);
 
       var resultDiv = document.getElementById("result");
-      resultDiv.innerHTML = "Mean: " + mean.toFixed(2) + "<br>";
       resultDiv.innerHTML += "Standard Deviation: " + roundedStandardDeviation + "<br>";
       resultDiv.innerHTML += "Range: " + range.toFixed(2);
   }
